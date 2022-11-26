@@ -1,0 +1,30 @@
+{% extends 'lib/base.html' %}
+{% load static %}
+
+{% block title %}My Library Project{% endblock %}
+
+{% block content %}
+    
+<div class="row justify-content-between">
+    <div class="col-3">
+        <img src="{% static 'lib/img/book.png' %}" class="img-fluid">
+        <a href="#">
+            <h3>All Books</h3>
+        </a>
+    </div>
+    <div class="col-3">
+        <img src="{% static 'lib/img/author.png' %}" class="img-fluid">
+        <a href="#">
+            <h3>All Authors</h3>
+        </a>
+    </div>
+    <div class="col-3">
+        <img src="{% static 'lib/img/genre.png' %}" class="img-fluid">
+        <a href="#">
+            <h3>All Genres</h3>
+        </a>
+    </div>
+</div>
+
+{% endblock %}
+
