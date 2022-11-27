@@ -1,0 +1,26 @@
+{% extends 'lib/base.html' %}
+{% load static %}
+
+{% block title %}{{ book }}{% endblock %}
+
+{% block content %}
+    
+<div class="row mt-5">
+    <div class="col-3">
+        <img src="{{ book.cover }}" class="w-50">
+    </div>
+    <div class="col-5">
+        <a href="#" class="text-primary">
+            <h4>{{ book.author }}</h4>
+        </a>
+        <h1>{{ book }}</h1>
+        <br>
+        {% if book.summary %}
+            <small>{{ book.summary }}</small>
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}
+

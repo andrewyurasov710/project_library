@@ -8,20 +8,20 @@
 <div class="row justify-content-between">
     <div class="col-3">
         <img src="{% static 'lib/img/book.png' %}" class="img-fluid">
-        <a href="#">
-            <h3>All Books</h3>
+        <a href="{% url 'lib:book_list' %}">
+            <h3>All Books ({{ n1 }})</h3>
         </a>
     </div>
     <div class="col-3">
         <img src="{% static 'lib/img/author.png' %}" class="img-fluid">
         <a href="#">
-            <h3>All Authors</h3>
+            <h3>All Authors ({{ n2 }})</h3>
         </a>
     </div>
     <div class="col-3">
         <img src="{% static 'lib/img/genre.png' %}" class="img-fluid">
         <a href="#">
-            <h3>All Genres</h3>
+            <h3>All Genres ({{ n3 }})</h3>
         </a>
     </div>
 </div>

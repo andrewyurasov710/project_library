@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Author(models.Model):
@@ -27,4 +28,7 @@ class Book(models.Model):
     
     def __str__(self):
         return self.title
+    
+    def url(self):
+        return reverse('lib:book_detail', kwargs={'pk': self.id})
     

@@ -6,7 +6,8 @@ from .models import *
 
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['name', 'surname', 'born']
+    list_filter = ['surname']
 
 
 @admin.register(Genre)
@@ -16,4 +17,5 @@ class GenreAdmin(admin.ModelAdmin):
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['title', 'author']
+    list_filter = ['author']

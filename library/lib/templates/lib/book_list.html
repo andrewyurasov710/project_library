@@ -1,0 +1,30 @@
+{% extends 'lib/base.html' %}
+{% load static %}
+
+{% block title %}All Books{% endblock %}
+
+{% block content %}
+    
+<div class="row mt-5">
+    {% for book in books %}
+    <div class="col-3 text-center my-3">
+        <img src="{{ book.cover }}" class="w-50 img-thumbnail">
+        <!-- <a href="{% url 'lib:book_detail' book.id %}"> -->
+        <a href="{{ book.url }}">
+            <h5 class="text-center">{{ book.title }}</h5>
+        </a>
+        <a href="#">
+            <p class="text-center text-success">{{ book.author }}</p>
+        </a>
+        <small>
+            {% for genre in book.genres.all %}
+                <a href="#" class="text-secondary">{{ genre }}</a>
+            {% endfor %}
+        </small>
+    </div>
+    {% endfor %}
+    
+</div>
+
+{% endblock %}
+
