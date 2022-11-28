@@ -1,0 +1,26 @@
+{% extends 'lib/base.html' %}
+{% load static %}
+
+{% block title %}All Authors{% endblock %}
+
+{% block content %}
+    
+<div class="row mt-5">
+    {% for author in authors %}
+    <div class="col-3 text-center my-3">
+        <img src="{{ author.portrait }}" class="w-50 img-thumbnail">
+        <a href="#">
+            <p class="text-center text-success">{{ author }}</p>
+        </a>
+        <p>
+            {% for genre in author.genres %}
+                <a href="#">{{ genre }}</a>
+            {% endfor %}
+        </p>
+    </div>
+    {% endfor %}
+    
+</div>
+
+{% endblock %}
+
