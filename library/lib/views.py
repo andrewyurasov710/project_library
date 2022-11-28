@@ -23,3 +23,10 @@ def book_detail(request, pk):
         'book': Book.objects.get(pk=pk),
     }
     return render(request, template_name='lib/book_detail.html', context=context)
+
+
+def author_list(request):
+    context = {
+        'authors': Author.objects.order_by('surname', 'name'),
+    }
+    return render(request, template_name='lib/author_list.html', context=context)

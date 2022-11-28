@@ -11,6 +11,15 @@ class Author(models.Model):
     def __str__(self):
         return f'{self.name} {self.surname}'
     
+    def genres(self):
+        # g_list = []
+        # for book in self.books.all():
+        #     for genre in book.genres.all():
+        #         if genre not in g_list:
+        #             g_list.append(genre)
+        # return g_list
+        return Genre.objects.filter(books__author=self).distinct()
+    
 
 class Genre(models.Model):
     name = models.CharField(max_length=64)
