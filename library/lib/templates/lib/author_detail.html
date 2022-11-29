@@ -7,7 +7,16 @@
     
 <div class="row mt-5">
     <div class="col-3">
-        <img src="{{ author.portrait }}" class="w-75">
+        <img src="{{ author.portrait }}" class="w-75 mb-5">
+        {% for comment in author.comments.all %}
+            <p>{{ comment.author }} about 
+                <a href="{{ comment.book.url }}">
+                    "{{ comment.book }}"
+                </a>
+                : 
+                <br>{{ comment.text }}</p>
+            <code>({{ comment.published }})</code>
+        {% endfor %}
     </div>
     <div class="col-7">
         <h1 class="text-success">{{ author }}</h1>

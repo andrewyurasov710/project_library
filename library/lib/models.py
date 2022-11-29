@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 
 
 class Author(models.Model):
@@ -22,6 +23,9 @@ class Author(models.Model):
     
     def url(self):
         return reverse('lib:author_detail', kwargs={'pk': self.id})
+    
+    def comments(self):
+        return Comment.objects.filter(book__author=self)
 
 
 class Genre(models.Model):
@@ -49,4 +53,16 @@ class Book(models.Model):
     
     def url(self):
         return reverse('lib:book_detail', kwargs={'pk': self.id})
+
+
+class Comment(models.Model):
+    text = models.TextField()
+    author = models.CharField(max_length=128)
+    book = models.ForeignKey(Book, related_name='comments', on_delete=models.CASCADE)
+    published = models.DateTimeField(default=timezone.now)
     
+    def __str__(self):
+        return self.text
+    
+    class Meta:
+        ordering = ['-published']

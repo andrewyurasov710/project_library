@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .models import *
 
@@ -44,3 +45,14 @@ def genre_list(request):
         'genres': Genre.objects.all(),
     }
     return render(request, template_name='lib/genre_list.html', context=context)
+
+
+def add_comment(request):
+    book_id = request.POST.get('book_id')
+    book = Book.objects.get(pk=book_id)
+    text = request.POST.get('text')
+    author = request.POST.get('author')
+    if text and author:
+        new_comment = Comment(text=text, author=author, book_id=book_id)
+        new_comment.save()
+    return HttpResponseRedirect(book.url())

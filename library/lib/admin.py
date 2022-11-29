@@ -2,7 +2,11 @@ from django.contrib import admin
 from .models import *
 
 
-# admin.site.register(Author)
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['text', 'author', 'published']
+    list_filter = ['book']
+
 
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):

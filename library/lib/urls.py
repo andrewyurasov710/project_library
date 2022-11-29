@@ -11,6 +11,8 @@ urlpatterns = [
     path(route='authors/', view=views.author_list, name='author_list'),
     path(route='author/<int:pk>/', view=views.author_detail, name='author_detail'),
     path(route='genres/', view=views.genre_list, name='genre_list'),
+    path(route='add/comment/', view=views.add_comment, name='add_comment'),
 ]
+
 
 
