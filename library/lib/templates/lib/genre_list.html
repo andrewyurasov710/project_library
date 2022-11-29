@@ -1,0 +1,29 @@
+{% extends 'lib/base.html' %}
+{% load static %}
+
+{% block title %}All Genres{% endblock %}
+
+{% block content %}
+    {% for genre in genres %}
+        <a name="section-{{genre.id}}"></a>
+        <h3>Genre: "{{ genre }}"</h3>
+        <div class="row mt-5">
+            {% for book in genre.books.all %}
+            <div class="col-3 text-center my-3">
+                <img src="{{ book.cover }}" class="w-50 img-thumbnail">
+                <!-- <a href="{% url 'lib:book_detail' book.id %}"> -->
+                <a href="{{ book.url }}">
+                    <h5 class="text-center">{{ book.title }}</h5>
+                </a>
+                <a href="{{ book.author.url }}">
+                    <p class="text-center text-success">{{ book.author }}</p>
+                </a>
+            </div>
+            {% endfor %}
+            
+        </div>
+
+    {% endfor %}
+
+{% endblock %}
+

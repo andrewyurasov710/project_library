@@ -30,3 +30,17 @@ def author_list(request):
         'authors': Author.objects.order_by('surname', 'name'),
     }
     return render(request, template_name='lib/author_list.html', context=context)
+
+
+def author_detail(request, pk):
+    context = {
+        'author': Author.objects.get(pk=pk),
+    }
+    return render(request, template_name='lib/author_detail.html', context=context)
+
+
+def genre_list(request):
+    context = {
+        'genres': Genre.objects.all(),
+    }
+    return render(request, template_name='lib/genre_list.html', context=context)

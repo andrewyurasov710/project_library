@@ -1,0 +1,42 @@
+{% extends 'lib/base.html' %}
+{% load static %}
+
+{% block title %}{{ author }}{% endblock %}
+
+{% block content %}
+    
+<div class="row mt-5">
+    <div class="col-3">
+        <img src="{{ author.portrait }}" class="w-75">
+    </div>
+    <div class="col-7">
+        <h1 class="text-success">{{ author }}</h1>
+        <code>Born on: {{ author.born }}</code>
+        <div class="row justify-content-between">
+            <div class="col-5">
+                <h4>Genres ({{ author.genres.all | length }}):</h4>
+                <ul>
+                    {% for genre in author.genres.all %}
+                        <li>
+                            <a href="{{ genre.url }}">{{ genre }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-7">
+                <h4>Books ({{ author.books.all | length }}):</h4>
+                <ul>
+                    {% for book in author.books.all %}
+                        <li>
+                            <a href="{{ book.url }}">{{ book }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+

@@ -10,10 +10,15 @@
         <img src="{{ book.cover }}" class="w-50">
     </div>
     <div class="col-5">
-        <a href="#" class="text-primary">
+        <a href="{{ book.author.url }}" class="text-success">
             <h4>{{ book.author }}</h4>
         </a>
         <h1>{{ book }}</h1>
+        <small>
+            {% for genre in book.genres.all %}
+                <a href="{{ genre.url }}" class="text-secondary">{{ genre }}</a>
+            {% endfor %}
+        </small>
         <br>
         {% if book.summary %}
             <small>{{ book.summary }}</small>

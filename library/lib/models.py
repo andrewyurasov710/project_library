@@ -20,13 +20,22 @@ class Author(models.Model):
         # return g_list
         return Genre.objects.filter(books__author=self).distinct()
     
+    def url(self):
+        return reverse('lib:author_detail', kwargs={'pk': self.id})
+
 
 class Genre(models.Model):
     name = models.CharField(max_length=64)
     
     def __str__(self):
         return self.name
-    
+
+    def url(self):
+        return reverse(viewname='lib:genre_list') + f'#section-{self.id}'
+
+    class Meta:
+        ordering = ['name']
+
 
 class Book(models.Model):
     title = models.CharField(max_length=255)

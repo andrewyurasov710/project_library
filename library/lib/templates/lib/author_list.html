@@ -9,12 +9,12 @@
     {% for author in authors %}
     <div class="col-3 text-center my-3">
         <img src="{{ author.portrait }}" class="w-50 img-thumbnail">
-        <a href="#">
+        <a href="{{ author.url }}">
             <p class="text-center text-success">{{ author }}</p>
         </a>
         <p>
             {% for genre in author.genres %}
-                <a href="#">{{ genre }}</a>
+                <a href="{{ genre.url }}">{{ genre }}</a>
             {% endfor %}
         </p>
     </div>
