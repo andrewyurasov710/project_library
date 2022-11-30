@@ -23,3 +23,6 @@ class GenreAdmin(admin.ModelAdmin):
 class BookAdmin(admin.ModelAdmin):
     list_display = ['title', 'author']
     list_filter = ['author']
+
+
+admin.site.register(BookInstance)

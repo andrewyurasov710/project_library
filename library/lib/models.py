@@ -66,3 +66,19 @@ class Comment(models.Model):
     
     class Meta:
         ordering = ['-published']
+        
+        
+class BookInstance(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.SET_NULL, null=True, related_name='instances')
+    LOAN_STATUS = (
+        ('a', 'available'),
+        ('o', 'on loan'),
+        ('m', 'maintenance'),
+        ('r', 'reserved')
+    )
+    status = models.CharField(max_length=1, choices=LOAN_STATUS, default='a')
+    due_back = models.DateField(null=True, blank=True)
+    
+    def __str__(self):
+        return f'{self.id} - {self.book} - "{self.status}"'
+    
